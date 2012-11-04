@@ -2,6 +2,10 @@ Harmonikv1::Application.routes.draw do
 
   devise_for :users
 
+  resources :users do
+    resources :responses
+  end
+
   resources :surveys
   root :to => "surveys#index"
   # The priority is based upon order of creation:
