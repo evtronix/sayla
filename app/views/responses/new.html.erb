@@ -1,0 +1,24 @@
+<%= form_tag('/responses', :method => :post) do %>
+  <ol>
+  <% @survey.questions.each do |question| %>
+    <%= content_tag(:li, label_tag(:question, question.content)) %>
+      <ol>
+      	<% question.answers.each do |answer| %>
+      	  <%= content_tag_for(:li, answer) do %>
+      	  <%= radio_button_tag "response[#{question.id}][answer_id]", "#{answer.id}", :checked => true %>
+      	  <%= label_tag :answer, answer.content %>
+      	  <% end %>
+      	<% end %>
+	  </ol>
+
+
+  <!-- question.content
+    fields_for response do |f| 
+     f.text_area :conteny
+    f.submit
+  end -->
+<% end %>
+</ol>
+
+<%= submit_tag "Submit My Answer" %>
+<% end %>

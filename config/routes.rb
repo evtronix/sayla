@@ -2,9 +2,9 @@ Harmonikv1::Application.routes.draw do
 
   devise_for :users
 
-  resources :users do
-    resources :responses
-  end
+  resources :users
+  
+  resources :responses
 
   resources :surveys
   root :to => "surveys#index"
