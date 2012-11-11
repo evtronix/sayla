@@ -1,3 +1,4 @@
+<% unless survey_completed?(current_user, @survey) %>
 <%= form_tag('/responses', :method => :post) do %>
   <ol>
   <% @survey.questions.each do |question| %>
@@ -14,4 +15,5 @@
 </ol>
 
 <%= submit_tag "Submit My Answer" %>
+<% end %>
 <% end %>
