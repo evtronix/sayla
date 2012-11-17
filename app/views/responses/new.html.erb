@@ -3,17 +3,35 @@
   <ol>
   <% @survey.questions.each do |question| %>
     <%= content_tag(:li, label_tag(:question, question.content)) %>
-      <ol>
-      	<% question.answers.each do |answer| %>
-      	  <%= content_tag_for(:li, answer) do %>
-      	  <%= radio_button_tag "response[#{question.id}][answer_id]", "#{answer.id}", :checked => true %>
-      	  <%= label_tag :answer, answer.content %>
-      	  <% end %>
-      	<% end %>
-	  </ol>
-<% end %>
-</ol>
+      <% if question.question_type == 'radio_button' %>
+        <ol>
+        	<% question.answers.each do |answer| %>
+        	  <%= content_tag_for(:li, answer) do %>
+        	  <%= radio_button_tag "response[#{question.id}][answer_id]", "#{answer.id}", :checked => true %>
+        	  <%= label_tag :answer, answer.content %>
+        	  <% end %>
+        	<% end %>
+  	    </ol>
+      <% end %>
 
-<%= submit_tag "Submit My Answer" %>
+      <% if question.question_type == 'checkbox' %>
+        <ol>
+          <% question.answers.each do |answer| %>
+            <%= content_tag_for(:li, answer) do %>
+            <%= check_box_tag "response[#{question.id}][answer_id]", "#{answer.id}", :checked => true %>
+            <%= label_tag :answer, answer.content %>
+            <% end %>
+          <% end %>
+        </ol>
+      <% end %> 
+
+      <% if question.question_type == 'free_response' %>
+        <%= text_area_tag "response[#{question.id}][content]", nil, :rows => 3, :cols => 40 %>
+      <% end %> 
+
+  <% end %>
+  </ol>
+
+  <%= submit_tag "Submit My Answer" %>
 <% end %>
 <% end %>
