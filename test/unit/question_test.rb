@@ -2,11 +2,12 @@
 #
 # Table name: questions
 #
-#  id         :integer          not null, primary key
-#  survey_id  :integer
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :integer          not null, primary key
+#  survey_id     :integer
+#  content       :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  question_type :string(255)
 #
 
 require 'test_helper'
