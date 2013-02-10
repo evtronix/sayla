@@ -1,3 +1,5 @@
+<div class="row">
+<div class="span7">
 <% unless survey_completed?(current_user, @survey) %>
 <%= form_tag('/responses', :method => :post) do %>
   <ol>
@@ -26,7 +28,7 @@
       <% end %> 
 
       <% if question.question_type == 'free_response' %>
-        <%= text_area_tag "response[#{question.id}][content]", nil, :rows => 3, :cols => 40 %>
+        <%= text_area_tag "response[#{question.id}][content]", nil, :rows => 6, :cols => 40 %>
       <% end %> 
 
   <% end %>
@@ -40,3 +42,15 @@
 <h4> No new surveys at this time, but feel free to speak your mind in the suggestion box! </h4>
 
 <% end %>
+</div>
+
+<div class="span5">
+  <h4> Unprompted feedback box: </h4>
+  <%= form_tag('/suggestions', :method => :post) do %>
+    <%= text_area_tag "suggestion[content]", nil, :class => "suggestiontext" %>
+    <br />
+    <%= submit_tag "Submit Feedback" %>
+  <% end %>
+</div>
+</div>
+

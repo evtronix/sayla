@@ -29,5 +29,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :responses, :dependent => :destroy
+  has_many :suggestions
   accepts_nested_attributes_for :responses
 end

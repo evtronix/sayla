@@ -1,5 +1,7 @@
 Harmonikv1::Application.routes.draw do
 
+  resources :suggestions
+
   devise_for :users
 
   resources :users
