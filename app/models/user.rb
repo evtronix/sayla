@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
+  belongs_to :company
   has_many :responses, :dependent => :destroy
   has_many :suggestions
   accepts_nested_attributes_for :responses
